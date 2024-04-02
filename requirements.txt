@@ -2,4 +2,8 @@ streamlit
 scikit-learn
 fuzzywuzzy
 distance
-bs4
+beautifulsoup4
+numpy
+pandas
+pickle5
+seaborn
