@@ -1,9 +1,24 @@
+import os
 import streamlit as st
 import helper
 import pickle
 
+# Get the current working directory
+current_directory = os.getcwd()
+
+# Define the default model file path
+default_model_path = os.path.join(current_directory, 'model.pkl')
+
 # Load the machine learning model
-model = pickle.load(open('model.pkl', 'rb'))
+try:
+    with open(default_model_path, 'rb') as file:
+        model = pickle.load(file)
+except FileNotFoundError:
+    st.error("Error: 'model.pkl' not found in the current directory.")
+    st.stop()
+except Exception as e:
+    st.error(f"An error occurred while loading the model: {e}")
+    st.stop()
 
 # Display the title
 st.header('Duplicate Question Pairs')
